@@ -47,7 +47,7 @@ CREATE TABLE `Πύλη` (
 );
 
 CREATE TABLE `Terminal` (
-	`ID` varchar(255) NOT NULL AUTO_INCREMENT,
+	`ID` varchar(255) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
