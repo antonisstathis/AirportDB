@@ -18,17 +18,17 @@ CREATE TABLE `Πτήση` (
 	`Αριθμός επιβατών` INT(255),
 	`Αναχώρηση από` varchar(255) NOT NULL,
 	`Προορισμός` varchar(255) NOT NULL,
-	`Ημερομηνία/Ώρα αναχώρησης` DATETIME(255) NOT NULL,
-	`Ημερομηνία/Ώρα άφιξης` DATETIME(255) NOT NULL,
-	`Πραγματική ώρα αναχώρησης/άφιξης` DATETIME(255) NOT NULL,
+	`Ημερομηνία/Ώρα αναχώρησης` DATETIME NOT NULL,
+	`Ημερομηνία/Ώρα άφιξης` DATETIME NOT NULL,
+	`Πραγματική ώρα αναχώρησης/άφιξης` DATETIME NOT NULL,
 	`Αναχώρηση ή άφιξη` BINARY(1) NOT NULL,
 	`Ελεγκτής` varchar(255) NOT NULL,
 	`Κατάσταση` varchar(255) NOT NULL,
 	`Πύλη` varchar(255) NOT NULL,
 	`Αεροδιάδρομος` varchar(255) NOT NULL,
 	`ID θέσης στάθμευσης` varchar(255),
-	`Ώρα άφιξης στη στάθμευση` DATETIME(255),
-	`Ώρα αναχώρησης από στάθμευση` DATETIME(255),
+	`Ώρα άφιξης στη στάθμευση` DATETIME,
+	`Ώρα αναχώρησης από στάθμευση` DATETIME,
 	PRIMARY KEY (`Κωδικός πτήσης`)
 );
 
