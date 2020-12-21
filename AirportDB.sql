@@ -21,7 +21,7 @@ CREATE TABLE `Πτήση` (
 	`Ημερομηνία/Ώρα αναχώρησης` DATETIME NOT NULL,
 	`Ημερομηνία/Ώρα άφιξης` DATETIME NOT NULL,
 	`Πραγματική ώρα αναχώρησης/άφιξης` DATETIME NOT NULL,
-	`Αναχώρηση ή άφιξη` BINARY(1) NOT NULL,
+	`Αναχώρηση ή άφιξη` varchar(10) NOT NULL,
 	`Ελεγκτής` varchar(255) NOT NULL,
 	`Κατάσταση` varchar(255) NOT NULL,
 	`Πύλη` varchar(255) NOT NULL,
@@ -89,25 +89,26 @@ CREATE TABLE `Φορτώνει` (
 	PRIMARY KEY (`Κωδικός πτήσης`,`ID φορτωτή`)
 );
 
-ALTER TABLE `Αεροπλάνο` ADD CONSTRAINT `Αεροπλάνο_fk0` FOREIGN KEY (`Ιδιοκτήτης`) REFERENCES `Εταιρεία`(`Επωνυμία`);
+ALTER TABLE `Αεροπλάνο` ADD CONSTRAINT `Αεροπλάνο_fk0` FOREIGN KEY (`Ιδιοκτήτης`) REFERENCES `Εταιρεία`(`Επωνυμία`) ON UPDATE CASCADE;
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk0` FOREIGN KEY (`ID αεροπλάνου`) REFERENCES `Αεροπλάνο`(`ID`);
+ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk0` FOREIGN KEY (`ID αεροπλάνου`) REFERENCES `Αεροπλάνο`(`ID`) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk1` FOREIGN KEY (`Ελεγκτής`) REFERENCES `Ελεγκτής`(`ID`);
+ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk1` FOREIGN KEY (`Ελεγκτής`) REFERENCES `Ελεγκτής`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk2` FOREIGN KEY (`Πύλη`) REFERENCES `Πύλη`(`ID`);
+ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk2` FOREIGN KEY (`Πύλη`) REFERENCES `Πύλη`(`ID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk3` FOREIGN KEY (`Αεροδιάδρομος`) REFERENCES `Αεροδιάδρομος`(`ID αεροδιαδρόμου`);
+ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk3` FOREIGN KEY (`Αεροδιάδρομος`) REFERENCES `Αεροδιάδρομος`(`ID αεροδιαδρόμου`) ON UPDATE CASCADE;
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk4` FOREIGN KEY (`ID θέσης στάθμευσης`) REFERENCES `Θέση στάθμευσης`(`ID`);
+ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk4` FOREIGN KEY (`ID θέσης στάθμευσης`) REFERENCES `Θέση στάθμευσης`(`ID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Πύλη` ADD CONSTRAINT `Πύλη_fk0` FOREIGN KEY (`Terminal ID`) REFERENCES `Terminal`(`ID`);
+ALTER TABLE `Πύλη` ADD CONSTRAINT `Πύλη_fk0` FOREIGN KEY (`Terminal ID`) REFERENCES `Terminal`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE `Συντηρεί` ADD CONSTRAINT `Συντηρεί_fk0` FOREIGN KEY (`Κωδικός πτήσης`) REFERENCES `Πτήση`(`Κωδικός πτήσης`);
+ALTER TABLE `Συντηρεί` ADD CONSTRAINT `Συντηρεί_fk0` FOREIGN KEY (`Κωδικός πτήσης`) REFERENCES `Πτήση`(`Κωδικός πτήσης`) ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE `Συντηρεί` ADD CONSTRAINT `Συντηρεί_fk1` FOREIGN KEY (`ID συντηρητή`) REFERENCES `Συντηρητής`(`ID`);
+ALTER TABLE `Συντηρεί` ADD CONSTRAINT `Συντηρεί_fk1` FOREIGN KEY (`ID συντηρητή`) REFERENCES `Συντηρητής`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE `Φορτώνει` ADD CONSTRAINT `Φορτώνει_fk0` FOREIGN KEY (`Κωδικός πτήσης`) REFERENCES `Πτήση`(`Κωδικός πτήσης`);
+ALTER TABLE `Φορτώνει` ADD CONSTRAINT `Φορτώνει_fk0` FOREIGN KEY (`Κωδικός πτήσης`) REFERENCES `Πτήση`(`Κωδικός πτήσης`) ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE `Φορτώνει` ADD CONSTRAINT `Φορτώνει_fk1` FOREIGN KEY (`ID φορτωτή`) REFERENCES `Φορτωτής`(`ID`);
+ALTER TABLE `Φορτώνει` ADD CONSTRAINT `Φορτώνει_fk1` FOREIGN KEY (`ID φορτωτή`) REFERENCES `Φορτωτής`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
 
+ALTER TABLE `Πτήση` ADD CONSTRAINT check_anax_afixi CHECK (`Αναχώρηση ή άφιξη` IN (`Αναχώρηση`,`Άφιξη`));
