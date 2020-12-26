@@ -1,114 +1,113 @@
-CREATE TABLE `Εταιρεία` (
-	`Επωνυμία` varchar(255) NOT NULL,
-	`Τηλέφωνο` varchar(255) NOT NULL,
-	PRIMARY KEY (`Επωνυμία`)
+CREATE TABLE `Company` (
+	`Name` varchar(255) NOT NULL,
+	`Phone` varchar(255) NOT NULL,
+	PRIMARY KEY (`Name`)
 );
 
-CREATE TABLE `Αεροπλάνο` (
+CREATE TABLE `Plane` (
 	`ID` varchar(255) NOT NULL,
-	`Ιδιοκτήτης` varchar(255) NOT NULL,
-	`Κατασκευαστής` varchar(255) NOT NULL,
-	`Μοντέλο` varchar(255) NOT NULL,
+	`Owner` varchar(255) NOT NULL,
+	`Maker` varchar(255) NOT NULL,
+	`Model` varchar(255) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `Πτήση` (
-	`Κωδικός πτήσης` varchar(255) NOT NULL,
-	`ID αεροπλάνου` varchar(255) NOT NULL,
-	`Αριθμός επιβατών` INT(255),
-	`Αναχώρηση από` varchar(255) NOT NULL,
-	`Προορισμός` varchar(255) NOT NULL,
-	`Ημερομηνία/Ώρα αναχώρησης` DATETIME NOT NULL,
-	`Ημερομηνία/Ώρα άφιξης` DATETIME NOT NULL,
-	`Πραγματική ώρα αναχώρησης/άφιξης` DATETIME NOT NULL,
-	`Αναχώρηση ή άφιξη` varchar(10) NOT NULL,
-	`Ελεγκτής` varchar(255) NOT NULL,
-	`Κατάσταση` varchar(255) NOT NULL,
-	`Πύλη` varchar(255) NOT NULL,
-	`Αεροδιάδρομος` varchar(255) NOT NULL,
-	`ID θέσης στάθμευσης` varchar(255),
-	`Ώρα άφιξης στη στάθμευση` DATETIME,
-	`Ώρα αναχώρησης από στάθμευση` DATETIME,
-	PRIMARY KEY (`Κωδικός πτήσης`)
+CREATE TABLE `Flight` (
+	`FlightID` varchar(255) NOT NULL,
+	`PlaneID` varchar(255) NOT NULL,
+	`Departure` varchar(255) NOT NULL,
+	`Destination` varchar(255) NOT NULL,
+	`DepartTime` DATETIME NOT NULL,
+	`ArrivalTime` DATETIME NOT NULL,
+	`RealDepartTime` DATETIME NOT NULL,
+	`DepartOrArrival` BINARY(1) NOT NULL,
+	`Controller` varchar(255) NOT NULL,
+	`Status` varchar(255) NOT NULL,
+	`GateID` varchar(255) NOT NULL,
+	`AirstripID` varchar(255) NOT NULL,
+	`ParkingSpotID` varchar(255),
+	`ParkingStart` DATETIME(255),
+	`ParkingEnd` DATETIME(255),
+	PRIMARY KEY (`FlightID`)
 );
 
-CREATE TABLE `Ελεγκτής` (
+CREATE TABLE `Controller` (
 	`ID` BINARY NOT NULL,
-	`Όνομα` varchar(255) NOT NULL,
-	`Επώνυμο` varchar(255) NOT NULL,
-	`Τηλέφωνο` INT(255) NOT NULL UNIQUE,
+	`Name` varchar(255) NOT NULL,
+	`Surname` varchar(255) NOT NULL,
+	`Phone` INT(255) NOT NULL UNIQUE,
 	PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `Πύλη` (
-	`ID` varchar(255) NOT NULL,
-	`Terminal ID` varchar(255) NOT NULL,
-	PRIMARY KEY (`ID`)
+CREATE TABLE `Gate` (
+	`GateID` varchar(255) NOT NULL,
+	`TerminalID` varchar(255) NOT NULL,
+	PRIMARY KEY (`GateID`)
 );
 
 CREATE TABLE `Terminal` (
+	`ID` varchar(255) NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Engineer` (
+	`EngineerID` varchar(255) NOT NULL,
+	`Name` varchar(255) NOT NULL,
+	`Surname` varchar(255) NOT NULL,
+	`Phone` INT(255) NOT NULL,
+	PRIMARY KEY (`EngineerID`)
+);
+
+CREATE TABLE `Services` (
+	`FlightID` varchar(255) NOT NULL,
+	`EngineerID` varchar(255) NOT NULL,
+	PRIMARY KEY (`FlightID`,`EngineerID`)
+);
+
+CREATE TABLE `ParkingSpot` (
 	`ID` varchar(255) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `Συντηρητής` (
-	`ID` varchar(255) NOT NULL,
-	`Όνομα` varchar(255) NOT NULL,
-	`Επώνυμο` varchar(255) NOT NULL,
-	`Τηλέφωνο` INT(255) NOT NULL,
-	PRIMARY KEY (`ID`)
+CREATE TABLE `Airstrip` (
+	`AirstripID` varchar(255) NOT NULL,
+	PRIMARY KEY (`AirstripID`)
 );
 
-CREATE TABLE `Συντηρεί` (
-	`Κωδικός πτήσης` varchar(255) NOT NULL,
-	`ID συντηρητή` varchar(255) NOT NULL,
-	PRIMARY KEY (`Κωδικός πτήσης`,`ID συντηρητή`)
+CREATE TABLE `Freighter` (
+	`FreighterID` varchar(255) NOT NULL,
+	`Name` varchar(255) NOT NULL,
+	`Surname` varchar(255) NOT NULL,
+	`Phone` INT(255) NOT NULL,
+	PRIMARY KEY (`FreighterID`)
 );
 
-CREATE TABLE `Θέση στάθμευσης` (
-	`ID` varchar(255) NOT NULL,
-	PRIMARY KEY (`ID`)
+CREATE TABLE `Loads` (
+	`FlightID` varchar(255) NOT NULL,
+	`FreighterID` varchar(255) NOT NULL,
+	PRIMARY KEY (`FlightID`,`FreighterID`)
 );
 
-CREATE TABLE `Αεροδιάδρομος` (
-	`ID αεροδιαδρόμου` varchar(255) NOT NULL,
-	PRIMARY KEY (`ID αεροδιαδρόμου`)
-);
+ALTER TABLE `Plane` ADD CONSTRAINT `Plane_fk0` FOREIGN KEY (`Owner`) REFERENCES `Company`(`Name`);
 
-CREATE TABLE `Φορτωτής` (
-	`ID` varchar(255) NOT NULL,
-	`Όνομα` varchar(255) NOT NULL,
-	`Επώνυμο` varchar(255) NOT NULL,
-	`Τηλέφωνο` INT(255) NOT NULL,
-	PRIMARY KEY (`ID`)
-);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk0` FOREIGN KEY (`PlaneID`) REFERENCES `Plane`(`ID`);
 
-CREATE TABLE `Φορτώνει` (
-	`Κωδικός πτήσης` varchar(255) NOT NULL,
-	`ID φορτωτή` varchar(255) NOT NULL,
-	PRIMARY KEY (`Κωδικός πτήσης`,`ID φορτωτή`)
-);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk1` FOREIGN KEY (`Controller`) REFERENCES `Controller`(`ID`);
 
-ALTER TABLE `Αεροπλάνο` ADD CONSTRAINT `Αεροπλάνο_fk0` FOREIGN KEY (`Ιδιοκτήτης`) REFERENCES `Εταιρεία`(`Επωνυμία`) ON UPDATE CASCADE;
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk2` FOREIGN KEY (`GateID`) REFERENCES `Gate`(`GateID`);
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk0` FOREIGN KEY (`ID αεροπλάνου`) REFERENCES `Αεροπλάνο`(`ID`) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk3` FOREIGN KEY (`AirstripID`) REFERENCES `Airstrip`(`AirstripID`);
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk1` FOREIGN KEY (`Ελεγκτής`) REFERENCES `Ελεγκτής`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk4` FOREIGN KEY (`ParkingSpotID`) REFERENCES `ParkingSpot`(`ID`);
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk2` FOREIGN KEY (`Πύλη`) REFERENCES `Πύλη`(`ID`) ON UPDATE CASCADE;
+ALTER TABLE `Gate` ADD CONSTRAINT `Gate_fk0` FOREIGN KEY (`TerminalID`) REFERENCES `Terminal`(`ID`);
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk3` FOREIGN KEY (`Αεροδιάδρομος`) REFERENCES `Αεροδιάδρομος`(`ID αεροδιαδρόμου`) ON UPDATE CASCADE;
+ALTER TABLE `Services` ADD CONSTRAINT `Services_fk0` FOREIGN KEY (`FlightID`) REFERENCES `Flight`(`FlightID`);
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT `Πτήση_fk4` FOREIGN KEY (`ID θέσης στάθμευσης`) REFERENCES `Θέση στάθμευσης`(`ID`) ON UPDATE CASCADE;
+ALTER TABLE `Services` ADD CONSTRAINT `Services_fk1` FOREIGN KEY (`EngineerID`) REFERENCES `Engineer`(`EngineerID`);
 
-ALTER TABLE `Πύλη` ADD CONSTRAINT `Πύλη_fk0` FOREIGN KEY (`Terminal ID`) REFERENCES `Terminal`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk0` FOREIGN KEY (`FlightID`) REFERENCES `Flight`(`FlightID`);
 
-ALTER TABLE `Συντηρεί` ADD CONSTRAINT `Συντηρεί_fk0` FOREIGN KEY (`Κωδικός πτήσης`) REFERENCES `Πτήση`(`Κωδικός πτήσης`) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk1` FOREIGN KEY (`FreighterID`) REFERENCES `Freighter`(`FreighterID`);
 
-ALTER TABLE `Συντηρεί` ADD CONSTRAINT `Συντηρεί_fk1` FOREIGN KEY (`ID συντηρητή`) REFERENCES `Συντηρητής`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
-
-ALTER TABLE `Φορτώνει` ADD CONSTRAINT `Φορτώνει_fk0` FOREIGN KEY (`Κωδικός πτήσης`) REFERENCES `Πτήση`(`Κωδικός πτήσης`) ON UPDATE CASCADE ON DELETE SET NULL;
-
-ALTER TABLE `Φορτώνει` ADD CONSTRAINT `Φορτώνει_fk1` FOREIGN KEY (`ID φορτωτή`) REFERENCES `Φορτωτής`(`ID`) ON UPDATE CASCADE ON DELETE SET NULL;
-
-ALTER TABLE `Πτήση` ADD CONSTRAINT check_anax_afixi CHECK (`Αναχώρηση ή άφιξη` IN (`Αναχώρηση`,`Άφιξη`));
+ALTER TABLE `Πτήση` ADD CONSTRAINT check_anax_afixi CHECK (`DepartOrArrival` IN (0,1));
