@@ -26,8 +26,8 @@ CREATE TABLE `Flight` (
 	`GateID` varchar(255) NOT NULL,
 	`AirstripID` varchar(255) NOT NULL,
 	`ParkingSpotID` varchar(255),
-	`ParkingStart` DATETIME(255),
-	`ParkingEnd` DATETIME(255),
+	`ParkingStart` DATETIME,
+	`ParkingEnd` DATETIME,
 	PRIMARY KEY (`FlightID`)
 );
 
