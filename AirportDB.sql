@@ -88,26 +88,26 @@ CREATE TABLE `Loads` (
 	PRIMARY KEY (`FlightID`,`FreighterID`)
 );
 
-ALTER TABLE `Plane` ADD CONSTRAINT `Plane_fk0` FOREIGN KEY (`Owner`) REFERENCES `Company`(`Name`);
+ALTER TABLE `Plane` ADD CONSTRAINT `Plane_fk0` FOREIGN KEY (`Owner`) REFERENCES `Company`(`Name`) ON UPDATE CASCADE;
 
-ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk0` FOREIGN KEY (`PlaneID`) REFERENCES `Plane`(`ID`);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk0` FOREIGN KEY (`PlaneID`) REFERENCES `Plane`(`ID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk1` FOREIGN KEY (`Controller`) REFERENCES `Controller`(`ID`);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk1` FOREIGN KEY (`Controller`) REFERENCES `Controller`(`ID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk2` FOREIGN KEY (`GateID`) REFERENCES `Gate`(`GateID`);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk2` FOREIGN KEY (`GateID`) REFERENCES `Gate`(`GateID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk3` FOREIGN KEY (`AirstripID`) REFERENCES `Airstrip`(`AirstripID`);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk3` FOREIGN KEY (`AirstripID`) REFERENCES `Airstrip`(`AirstripID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk4` FOREIGN KEY (`ParkingSpotID`) REFERENCES `ParkingSpot`(`ID`);
+ALTER TABLE `Flight` ADD CONSTRAINT `Flight_fk4` FOREIGN KEY (`ParkingSpotID`) REFERENCES `ParkingSpot`(`ID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Gate` ADD CONSTRAINT `Gate_fk0` FOREIGN KEY (`TerminalID`) REFERENCES `Terminal`(`ID`);
+ALTER TABLE `Gate` ADD CONSTRAINT `Gate_fk0` FOREIGN KEY (`TerminalID`) REFERENCES `Terminal`(`ID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Services` ADD CONSTRAINT `Services_fk0` FOREIGN KEY (`FlightID`) REFERENCES `Flight`(`FlightID`);
+ALTER TABLE `Services` ADD CONSTRAINT `Services_fk0` FOREIGN KEY (`FlightID`) REFERENCES `Flight`(`FlightID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Services` ADD CONSTRAINT `Services_fk1` FOREIGN KEY (`EngineerID`) REFERENCES `Engineer`(`EngineerID`);
+ALTER TABLE `Services` ADD CONSTRAINT `Services_fk1` FOREIGN KEY (`EngineerID`) REFERENCES `Engineer`(`EngineerID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk0` FOREIGN KEY (`FlightID`) REFERENCES `Flight`(`FlightID`);
+ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk0` FOREIGN KEY (`FlightID`) REFERENCES `Flight`(`FlightID`) ON UPDATE CASCADE;
 
-ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk1` FOREIGN KEY (`FreighterID`) REFERENCES `Freighter`(`FreighterID`);
+ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk1` FOREIGN KEY (`FreighterID`) REFERENCES `Freighter`(`FreighterID`) ON UPDATE CASCADE;
 
 ALTER TABLE `Flight` ADD CONSTRAINT check_anax_afixi CHECK (`DepartOrArrival` IN (0,1));
