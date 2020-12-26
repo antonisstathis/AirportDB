@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `Loads`;
 
 CREATE TABLE `Company` (
 	`Name` varchar(255) NOT NULL,
-	`Phone` varchar(255) NOT NULL,
+	`Phone` INT(255) NOT NULL,
 	PRIMARY KEY (`Name`)
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE `Flight` (
 );
 
 CREATE TABLE `Controller` (
-	`ID` BINARY NOT NULL,
+	`ID` INT(255) NOT NULL,
 	`Name` varchar(255) NOT NULL,
 	`Surname` varchar(255) NOT NULL,
 	`Phone` INT(255) NOT NULL,
