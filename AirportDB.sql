@@ -35,7 +35,7 @@ CREATE TABLE `Controller` (
 	`ID` BINARY NOT NULL,
 	`Name` varchar(255) NOT NULL,
 	`Surname` varchar(255) NOT NULL,
-	`Phone` INT(255) NOT NULL UNIQUE,
+	`Phone` INT(255) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE `Gate` (
 );
 
 CREATE TABLE `Terminal` (
-	`ID` varchar(255) NOT NULL AUTO_INCREMENT,
+	`ID` varchar(255) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
