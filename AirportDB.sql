@@ -19,7 +19,7 @@ CREATE TABLE `Flight` (
 	`Destination` varchar(255) NOT NULL,
 	`DepartTime` DATETIME NOT NULL,
 	`ArrivalTime` DATETIME NOT NULL,
-	`RealDepartTime` DATETIME NOT NULL,
+	`RealDepartTime` DATETIME,
 	`DepartOrArrival` BINARY(1) NOT NULL,
 	`Controller` varchar(255) NOT NULL,
 	`Status` varchar(255) NOT NULL,
