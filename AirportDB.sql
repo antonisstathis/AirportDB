@@ -110,4 +110,4 @@ ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk0` FOREIGN KEY (`FlightID`) REFERENC
 
 ALTER TABLE `Loads` ADD CONSTRAINT `Loads_fk1` FOREIGN KEY (`FreighterID`) REFERENCES `Freighter`(`FreighterID`);
 
-ALTER TABLE `Πτήση` ADD CONSTRAINT check_anax_afixi CHECK (`DepartOrArrival` IN (0,1));
+ALTER TABLE `Flight` ADD CONSTRAINT check_anax_afixi CHECK (`DepartOrArrival` IN (0,1));
