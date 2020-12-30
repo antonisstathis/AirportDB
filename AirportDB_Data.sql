@@ -1,5 +1,17 @@
 -- Τρέχουσα ώρα: '2021-02-01 07:30:00'
 
+-- Airstrip
+INSERT INTO `Airstrip`(`AirstripID`) VALUES ('001') ;
+INSERT INTO `Airstrip`(`AirstripID`) VALUES ('002') ;
+
+-- Controller
+INSERT INTO `Controller`(`ID`,`Name`,`Surname`,`Phone`)
+VALUES ('001', 'Peggy', 'Zina', '8527416530') ;
+INSERT INTO `Controller`(`ID`,`Name`,`Surname`,`Phone`)
+VALUES ('002', 'Panos', 'Kiamos', '4214524542') ;
+INSERT INTO `Controller`(`ID`,`Name`,`Surname`,`Phone`)
+VALUES ('003', 'Vassilis', 'Tsitsanis', '3410045429') ;
+
 -- Company
 INSERT INTO `Company`(`Name`, `Phone`)
 VALUES ('NtuaAirlines', '1234567890') ;
@@ -39,6 +51,54 @@ INSERT INTO `Plane`(`ID`,`Owner`,`Maker`,`Model`)
 VALUES ('N00003', 'UmistAirlines', 'Boeing', '747') ;
 INSERT INTO `Plane`(`ID`,`Owner`,`Maker`,`Model`)
 VALUES ('N00004', 'UmistAirlines', 'Airbus', 'A320') ;
+
+
+-- ParkingSpot
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('001') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('002') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('003') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('004') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('005') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('006') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('007') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('008') ;
+INSERT INTO `ParkingSpot`(`ID`) VALUES ('009') ;
+
+
+-- Terminal
+INSERT INTO `Terminal`(`ID`) VALUES ('001') ;
+INSERT INTO `Terminal`(`ID`) VALUES ('002') ;
+
+
+-- Gate
+INSERT INTO `Gate`(`GateID`,`TerminalID`)
+VALUES ('A1', '001') ;
+INSERT INTO `Gate`(`GateID`,`TerminalID`)
+VALUES ('A2', '001') ;
+INSERT INTO `Gate`(`GateID`,`TerminalID`)
+VALUES ('B1', '002') ;
+INSERT INTO `Gate`(`GateID`,`TerminalID`)
+VALUES ('B2', '002') ;
+
+
+--Engineer
+INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
+VALUES ('001', 'Nikolaos', 'Karvelas', '1245648796') ;
+INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
+VALUES ('002', 'Georgios', 'Samoladas', '9431554780') ;
+INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
+VALUES ('003', 'Mims', 'Plessas', '6478202354') ;
+INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
+VALUES ('003', 'Ioannis', 'Oikonomopoulos', '5469875311') ;
+
+
+-- Freighter
+INSERT INTO `Engineer`(`FreighterID`,`Name`,`Surname`,`Phone`)
+VALUES ('001', 'Dimitrios', 'Efthimiou', '4568790123') ;
+INSERT INTO `Engineer`(`FreighterID`,`Name`,`Surname`,`Phone`)
+VALUES ('002', 'Petros', 'Mokas', '6958741230') ;
+INSERT INTO `Engineer`(`FreighterID`,`Name`,`Surname`,`Phone`)
+VALUES ('003', 'Ioannis', 'Vassiliou', '5846321745') ;
 
 
 -- Flight
@@ -93,7 +153,7 @@ NULL,'002',NULL,'A1','002','009','2021-02-01 09:40:00','2021-02-01 12:00:00') ;
 INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, 'DepartTime',`ArrivalTime`,
 `RealDepartTime`,`Controller`,`Status`,`GateID`,`AirstripID`,`ParkingSpotID`,
 `ParkingStart`,`ParkingEnd`)
-VALUES ('NT811','N00004','UPA','CGD', '2021-01-31 23:15:00', '2021-02-01 02:00:00',
+VALUES ('NT817','N00004','UPA','CGD', '2021-01-31 23:15:00', '2021-02-01 02:00:00',
 '2021-02-01 23:16:00','001','Complete','B1','001','007','2021-02-01 08:00:00','2021-02-01 08:00:00') ;
 
 INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, 'DepartTime',`ArrivalTime`,
@@ -103,61 +163,46 @@ VALUES ('FE811','N00004','CGD','UPA', '2021-02-01 04:00:00', '2021-02-01 07:32:0
 '2021-02-01 04:20:00','001','Landing','B1','001','008','2021-02-01 08:15:00','2021-02-01 013:50:00') ;
 
 
--- Controller
-INSERT INTO `Controller`(`ID`,`Name`,`Surname`,`Phone`)
-VALUES ('001', 'Peggy', 'Zina', '8527416530') ;
-INSERT INTO `Controller`(`ID`,`Name`,`Surname`,`Phone`)
-VALUES ('002', 'Panos', 'Kiamos', '4214524542') ;
-INSERT INTO `Controller`(`ID`,`Name`,`Surname`,`Phone`)
-VALUES ('003', 'Vassilis', 'Tsitsanis', '3410045429') ;
-
--- Gate
-INSERT INTO `Gate`(`GateID`,`TerminalID`)
-VALUES ('A1', '001') ;
-INSERT INTO `Gate`(`GateID`,`TerminalID`)
-VALUES ('A2', '001') ;
-INSERT INTO `Gate`(`GateID`,`TerminalID`)
-VALUES ('B1', '002') ;
-INSERT INTO `Gate`(`GateID`,`TerminalID`)
-VALUES ('B2', '002') ;
-
--- Terminal
-INSERT INTO `Terminal`(`ID`) VALUES ('001') ;
-INSERT INTO `Terminal`(`ID`) VALUES ('002') ;
-
---Engineer
-INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
-VALUES ('001', 'Nikolaos', 'Karvelas', '1245648796') ;
-INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
-VALUES ('002', 'Georgios', 'Samoladas', '9431554780') ;
-INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
-VALUES ('003', 'Mims', 'Plessas', '6478202354') ;
-INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
-VALUES ('003', 'Ioannis', 'Oikonomopoulos', '5469875311') ;
+-- Loads
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('NT811', '001') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('US951', '002') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('NT325', '003') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('NT729', '004') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('UP811', '001') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('NT911', '002') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('UP458', '003') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('UP459', '004') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('NT817', '001') ;
+INSERT INTO `Services`(`FlightID`, `FreighterID`)
+VALUES ('FE811', '002') ;
 
 -- Services
-
--- ParkingSpot
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('001') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('002') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('003') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('004') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('005') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('006') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('007') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('008') ;
-INSERT INTO `ParkingSpot`(`ID`) VALUES ('009') ;
-
--- Airstrip
-INSERT INTO `Airstrip`(`AirstripID`) VALUES ('001') ;
-INSERT INTO `Airstrip`(`AirstripID`) VALUES ('002') ;
-
--- Freighter
-INSERT INTO `Engineer`(`FreighterID`,`Name`,`Surname`,`Phone`)
-VALUES ('001', 'Dimitrios', 'Efthimiou', '4568790123') ;
-INSERT INTO `Engineer`(`FreighterID`,`Name`,`Surname`,`Phone`)
-VALUES ('002', 'Petros', 'Mokas', '6958741230') ;
-INSERT INTO `Engineer`(`FreighterID`,`Name`,`Surname`,`Phone`)
-VALUES ('003', 'Ioannis', 'Vassiliou', '5846321745') ;
-
--- Loads
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('NT811', '001') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('US951', '002') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('NT325', '003') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('NT729', '004') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('UP811', '001') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('NT911', '002') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('UP458', '003') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('UP459', '004') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('NT817', '001') ;
+INSERT INTO `Services`(`FlightID`, `EngineerID`)
+VALUES ('FE811', '002') ;
