@@ -89,7 +89,7 @@ VALUES ('002', 'Georgios', 'Samoladas', '9431554780') ;
 INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
 VALUES ('003', 'Mims', 'Plessas', '6478202354') ;
 INSERT INTO `Engineer`(`EngineerID`,`Name`,`Surname`,`Phone`)
-VALUES ('003', 'Ioannis', 'Oikonomopoulos', '5469875311') ;
+VALUES ('004', 'Ioannis', 'Oikonomopoulos', '5469875311') ;
 
 
 -- Freighter
@@ -147,7 +147,13 @@ VALUES ('UP458','N00001','EWA','UPA', '2021-01-31 23:15:00', '2021-02-01 09:00:0
 INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, `DepartTime`,`ArrivalTime`,
 `RealDepartTime`,`Controller`,`Status`,`GateID`,`AirstripID`,`ParkingSpotID`,
 `ParkingStart`,`ParkingEnd`)
-VALUES ('UP459','N00001','UPA','EWA', '2021-02-01 13:00:00', '2021-02-01 22:00:00',
+VALUES ('UP459','N00003','EWA','UPA', '2021-01-31 23:15:00', '2021-02-01 09:15:00',
+'2021-01-31 23:25:00','001','OnAir','B2','001','009','2021-02-01 09:40:00','2021-02-01 12:00:00') ;
+
+INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, `DepartTime`,`ArrivalTime`,
+`RealDepartTime`,`Controller`,`Status`,`GateID`,`AirstripID`,`ParkingSpotID`,
+`ParkingStart`,`ParkingEnd`)
+VALUES ('UP460','N00001','UPA','EWA', '2021-02-01 13:00:00', '2021-02-01 22:00:00',
 NULL,'002',NULL,'A1','002','009','2021-02-01 09:40:00','2021-02-01 12:00:00') ;
 
 INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, `DepartTime`,`ArrivalTime`,
