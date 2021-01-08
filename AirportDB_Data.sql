@@ -160,8 +160,13 @@ INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, `DepartTime
 `RealDepartTime`,`Controller`,`Status`,`GateID`,`AirstripID`,`ParkingSpotID`,
 `ParkingStart`,`ParkingEnd`)
 VALUES ('FE811','N00004','CGD','UPA', '2021-02-01 04:00:00', '2021-02-01 07:32:00',
-'2021-02-01 04:20:00','001','Landing','B1','001','008','2021-02-01 08:15:00','2021-02-01 013:50:00') ;
+'2021-02-01 04:20:00','001','Landing','B1','001','008','2021-02-01 08:15:00','2021-02-01 13:50:00') ;
 
+INSERT INTO `Flight`(`FlightID`,`PlaneID`,`Departure`,`Destination`, `DepartTime`,`ArrivalTime`,
+`RealDepartTime`,`Controller`,`Status`,`GateID`,`AirstripID`,`ParkingSpotID`,
+`ParkingStart`,`ParkingEnd`)
+VALUES ('FE467','N00004','CGD','UPA', '2021-02-01 04:00:00', '2021-02-01 07:52:00',
+'2021-02-01 04:20:00','001','Landing','B1','001','008','2021-02-01 08:15:00','2021-02-01 13:50:00') ;
 
 -- Loads
 INSERT INTO `Services`(`FlightID`, `FreighterID`)
