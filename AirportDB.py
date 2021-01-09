@@ -6,9 +6,9 @@ import mysql.connector
 def connect_database():
     mydb = mysql.connector.connect(
         host="localhost",
-        user="",
-        password="",
-        database=""
+        user="root",
+        password="06051995antonis",
+        database="airport_app"
     )
 
     return mydb
@@ -167,6 +167,7 @@ def ask_data(data):
 
 def searchFlights(mydb):
     directions = """
+    print all
     flight id,
     plane id,
     departure,
@@ -184,6 +185,13 @@ def searchFlights(mydb):
     search dates
     """
 
+    keys = ["flight id: ", "plane id: ", "departure: ", "destination: ", "departure time: ", "arrival time: ",
+            "real departure time: ", "controller: ", "status: ", "gate id: ", "airstrip id: ", "parking spot id: ",
+            "parking start date: ", "parking end date: "]
+
+    keys_dates = ["flight id: ", "plane id: ", "departure: ", "destination: ", "departure time: ", "arrival time: ",
+                  "gate id: "]
+
     message = "Enter one of the above options to select flights:"
 
     print(directions)
@@ -199,12 +207,33 @@ def searchFlights(mydb):
         last_date = input("Enter last date to search:")
         start_datetime = start_date + " 00:00:00"
         last_datetime = last_date + " 23:59:59"
+    if option == "print all":
+
+        try:
+            mycursor = mydb.cursor()
+            mycursor.execute("SELECT * FROM flight;")
+
+            i=1
+            for row in mycursor:
+                print("Flight " + str(i) + " information:")
+                print("------------------")
+                i=i+1
+                for counter in range(len(row)):
+                        result = keys[counter] + str(row[counter])
+                        print(result)
+                print("\n\n")
+
+        except:
+            print("Invalid data entered. Try again.")
+        return
+
     else:
         message1 = "Enter " + option + " to search for flights:"
         print(message1)
         data = input()
 
     queries = {
+        "print all":"SELECT * FROM flight;",
         "flight id": "SELECT * FROM flight WHERE FlightID = %s;",
         "plane id": "SELECT * FROM flight WHERE PlaneID = %s;",
         "departure": "SELECT * FROM flight WHERE Departure = %s;",
@@ -221,9 +250,6 @@ def searchFlights(mydb):
         "parking end": "SELECT * FROM flight WHERE ParkingEnd = %s;",
         "search dates": "SELECT FlightID,PlaneID,Departure,Destination,DepartTime,ArrivalTime,GateID FROM flight WHERE ((DepartTime BETWEEN %s AND %s AND Departure='UPA') OR (ArrivalTime BETWEEN %s AND %s AND Destination='UPA'));"
     }
-
-    keys = ["flight id: ", "plane id: ", "departure: ", "destination: ", "departure time: ", "arrival time: ", "real departure time: ", "controller: ", "status: ", "gate id: ", "airstrip id: ","parking spot id: ", "parking start date: ", "parking end date: "]
-    keys_dates = ["flight id: ", "plane id: ", "departure: ", "destination: ", "departure time: ", "arrival time: ", "gate id: "]
 
     if option == "search dates":
 
