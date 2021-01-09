@@ -6,9 +6,9 @@ import mysql.connector
 def connect_database():
     mydb = mysql.connector.connect(
         host="localhost",
-        user="",
-        password="",
-        database=""
+        user="root",
+        password="06051995antonis",
+        database="airport_app"
     )
 
     return mydb
@@ -1404,7 +1404,7 @@ def checkGates(mydb, check_minutes):
 
         i = 1
         for row in mycursor:
-            print("Flight " + str(i) + " information:")
+            print("Collision: "+str(i))
             print("------------------")
             i += 1
             for counter in range(len(row)):
@@ -1433,7 +1433,7 @@ def checkAirstrip(mydb, check_minutes):
 
         i = 1
         for row in mycursor:
-            print("Flight " + str(i) + " information:")
+            print("Collision: "+str(i))
             print("------------------")
             i += 1
             for counter in range(len(row)):
