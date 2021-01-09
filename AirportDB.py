@@ -6,9 +6,9 @@ import mysql.connector
 def connect_database():
     mydb = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="06051995antonis",
-        database="airport_app"
+        user="",
+        password="",
+        database=""
     )
 
     return mydb
