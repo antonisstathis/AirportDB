@@ -233,7 +233,6 @@ def searchFlights(mydb):
         data = input()
 
     queries = {
-        "print all":"SELECT * FROM flight;",
         "flight id": "SELECT * FROM flight WHERE FlightID = %s;",
         "plane id": "SELECT * FROM flight WHERE PlaneID = %s;",
         "departure": "SELECT * FROM flight WHERE Departure = %s;",
