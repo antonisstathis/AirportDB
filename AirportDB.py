@@ -1,65 +1,47 @@
+# -*- coding: utf-8 -*-
+
 import mysql.connector
 
 
 def connect_database():
     mydb = mysql.connector.connect(
-        host="",
+        host="localhost",
         user="",
         password="",
-        database="airport_app"
+        database=""
     )
 
     return mydb
 
 
 def printDirections():
+
     directions = """
         Enter one of the following options:
 
-        search flights
-        search company
-        search controller
-        search engineer
-        search freighter
-        search load
-        search plane
-        search service
-
-        insert flight
-        insert company
-        insert controller
-        insert engineer
-        insert freighter
-        insert load
-        insert plane
-        insert service
-
-        update flight
-        update company
-        update controller
-        update engineer
-        update freighter
-        update plane
-
-        delete flights
-        delete company
-        delete controller
-        delete engineer
-        delete freighter
-        delete load
-        delete plane
-        delete service
+        search flights          insert flight           update flight           delete flights
+        search company          insert company          update company          delete company
+        search controller       insert controller       update controller       delete controller
+        search engineer         insert engineer         update engineer         delete engineer
+        search freighter        insert freighter        update freighter        delete freighter
+        search plane            insert plane            update plane            delete plane
+        search load             insert load                                     delete load
+        search service          insert service                                  delete service
 
         check gates <minutes>
         check airstrip <minutes>
+
         exit
+
         """
+
     print(directions)
+
 
 
 def chooseFunction(mydb):
 
-    x = input("Enter: ")
+    x = input("[AirportDB ~]$ ")
     while (x != "exit"):
 
         if x == "search flights":
@@ -173,7 +155,7 @@ def chooseFunction(mydb):
                     if analysis[1] == 'airstrip':
                         checkAirstrip(mydb, check_minutes)
 
-        x = input("Enter: ")
+        x = input("[AirportDB ~]$ ")
 
 
 def ask_data(data):
@@ -237,19 +219,34 @@ def searchFlights(mydb):
         "parking spot id": "SELECT * FROM flight WHERE ParkingSpotID = %s;",
         "parking start": "SELECT * FROM flight WHERE ParkingStart = %s;",
         "parking end": "SELECT * FROM flight WHERE ParkingEnd = %s;",
-        "search dates": "SELECT FlightID,PlaneID,Departure,Destination,DepartTime,ArrivalTime,GateID FROM flight WHERE (DepartTime BETWEEN %s AND %s) AND (ArrivalTime BETWEEN %s AND %s);"
+        "search dates": "SELECT FlightID,PlaneID,Departure,Destination,DepartTime,ArrivalTime,GateID FROM flight WHERE ((DepartTime BETWEEN %s AND %s AND Departure='UPA') OR (ArrivalTime BETWEEN %s AND %s AND Destination='UPA'));"
     }
 
     keys = ["flight id: ", "plane id: ", "departure: ", "destination: ", "departure time: ", "arrival time: ", "real departure time: ", "controller: ", "status: ", "gate id: ", "airstrip id: ","parking spot id: ", "parking start date: ", "parking end date: "]
+    keys_dates = ["flight id: ", "plane id: ", "departure: ", "destination: ", "departure time: ", "arrival time: ", "gate id: "]
 
     if option == "search dates":
+
+        mytuple = (start_datetime, last_datetime, start_datetime, last_datetime)
+
         try:
-            mytuple = (start_datetime, last_datetime, start_datetime, last_datetime)
             mycursor = mydb.cursor()
             mycursor.execute(queries[option], mytuple)
-            result = mycursor.fetchall()
+
+            i = 1
+            for row in mycursor:
+                print("Flight " + str(i) + " information:")
+                print("------------------")
+                i = i + 1
+                for counter in range(len(row)):
+                    result = keys_dates[counter] + str(row[counter])
+                    print(result)
+                print("\n\n")
+
         except:
             print("Invalid data entered. Try again.")
+
+
     else:
         try:
             mycursor = mydb.cursor()
@@ -290,14 +287,24 @@ def searchCompany(mydb):
         "phone": "SELECT * FROM company WHERE Phone = %s;"
     }
 
+    keys = ["name: ", "phone: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Company " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def searchController(mydb):
@@ -325,14 +332,24 @@ def searchController(mydb):
         "phone": "SELECT * FROM controller WHERE Phone = %s;"
     }
 
+    keys = ["id: ", "name: ", "surname: ", "phone: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Controller " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def searchEngineer(mydb):
@@ -360,14 +377,24 @@ def searchEngineer(mydb):
         "phone": "SELECT * FROM engineer WHERE Phone = %s;"
     }
 
+    keys = ["id: ", "name: ", "surname: ", "phone: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Engineer " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def searchFreighter(mydb):
@@ -395,14 +422,24 @@ def searchFreighter(mydb):
         "phone": "SELECT * FROM freighter WHERE Phone = %s;"
     }
 
+    keys = ["id: ", "name: ", "surname: ", "phone: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Freighter " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def searchLoad(mydb):
@@ -426,14 +463,24 @@ def searchLoad(mydb):
         "freighter id": "SELECT * FROM loads WHERE FreighterID = %s;"
     }
 
+    keys = ["id: ", "name: ", "surname: ", "phone: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Load " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def searchPlane(mydb):
@@ -461,14 +508,24 @@ def searchPlane(mydb):
         "model": "SELECT * FROM plane WHERE Model = %s;"
     }
 
+    keys = ["id: ", "owner: ", "maker: ", "model: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Plane " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def searchService(mydb):
@@ -492,14 +549,24 @@ def searchService(mydb):
         "engineer": "SELECT * FROM services WHERE EngineerID = %s;"
     }
 
+    keys = ["flight id: ", "engineer: "]
+
     try:
         mycursor = mydb.cursor()
         mycursor.execute(queries[option], tuple([data]))
-        result = mycursor.fetchall()
+
+        i = 1
+        for row in mycursor:
+            print("Service " + str(i) + " information:")
+            print("------------------")
+            i = i + 1
+            for counter in range(len(row)):
+                result = keys[counter] + str(row[counter])
+                print(result)
+            print("\n\n")
+
     except:
         print("Invalid data entered. Try again.")
-
-    print(result)
 
 
 def deleteFlights(mydb):
@@ -1301,15 +1368,16 @@ def checkGates(mydb, check_minutes):
     UNION SELECT A.FlightID, B.FlightID,A.departure,A.GateID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
     UNION SELECT A.FlightID, B.FlightID,A.departure,A.GateID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
     UNION SELECT A.FlightID, B.FlightID,A.destination,A.GateID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
-    mytuple = (check_minutes, check_minutes,check_minutes, check_minutes,check_minutes, check_minutes,check_minutes, check_minutes)
+    mytuple = (check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes,
+               check_minutes)
 
-    keys = ["flight 1: ", "flight 2: ", "airport: ", "airstrip: ", "time difference: "]
+    keys = ["flight 1: ", "flight 2: ", "airport: ", "gate: ", "time difference: "]
 
     try:
         mycursor = mydb.cursor()
-        mycursor.execute(query,mytuple)
-    
-        i=1
+        mycursor.execute(query, mytuple)
+
+        i = 1
         for row in mycursor:
             print("Flight " + str(i) + " information:")
             print("------------------")
@@ -1326,18 +1394,19 @@ def checkGates(mydb, check_minutes):
 def checkAirstrip(mydb, check_minutes):
     check_minutes = str(check_minutes)
     query = '''SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))<%s) )
-    UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
-    UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
-    UNION SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
-    mytuple = (check_minutes, check_minutes,check_minutes, check_minutes,check_minutes, check_minutes,check_minutes, check_minutes)
+        UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
+        UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
+        UNION SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
+    mytuple = (check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes,
+               check_minutes)
 
     keys = ["flight 1: ", "flight 2: ", "airport: ", "airstrip: ", "time difference: "]
-    
+
     try:
         mycursor = mydb.cursor()
-        mycursor.execute(query,mytuple)
-    
-        i=1
+        mycursor.execute(query, mytuple)
+
+        i = 1
         for row in mycursor:
             print("Flight " + str(i) + " information:")
             print("------------------")
@@ -1349,8 +1418,6 @@ def checkAirstrip(mydb, check_minutes):
 
     except:
         print("Invalid data entered. Try again.")
-
-
 
 
 def main():
