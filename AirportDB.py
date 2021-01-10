@@ -5,7 +5,7 @@ import mysql.connector
 
 def connect_database():
     mydb = mysql.connector.connect(
-        host="localhost",
+        host="",
         user="",
         password="",
         database=""
@@ -15,10 +15,8 @@ def connect_database():
 
 
 def printDirections():
-
     directions = """
         Enter one of the following options:
-
         search flights          insert flight           update flight           delete flights
         search company          insert company          update company          delete company
         search controller       insert controller       update controller       delete controller
@@ -27,20 +25,15 @@ def printDirections():
         search plane            insert plane            update plane            delete plane
         search load             insert load                                     delete load
         search service          insert service                                  delete service
-
         check gates <minutes>
         check airstrip <minutes>
-
         exit
-
         """
 
     print(directions)
 
 
-
 def chooseFunction(mydb):
-
     x = input("[AirportDB ~]$ ")
     while (x != "exit"):
 
@@ -212,15 +205,15 @@ def searchFlights(mydb):
             mycursor = mydb.cursor()
             mycursor.execute("SELECT * FROM Flight;")
 
-            i=1
+            i = 1
             for row in mycursor:
                 print()
                 print("Flight " + str(i) + " information:")
                 print("------------------")
-                i=i+1
+                i = i + 1
                 for counter in range(len(row)):
-                        result = keys[counter] + str(row[counter])
-                        print(result)
+                    result = keys[counter] + str(row[counter])
+                    print(result)
                 print()
 
         except:
@@ -278,15 +271,15 @@ def searchFlights(mydb):
             mycursor = mydb.cursor()
             mycursor.execute(queries[option], tuple([data]))
 
-            i=1
+            i = 1
             for row in mycursor:
                 print()
                 print("Flight " + str(i) + " information:")
                 print("------------------")
-                i=i+1
+                i = i + 1
                 for counter in range(len(row)):
-                        result = keys[counter] + str(row[counter])
-                        print(result)
+                    result = keys[counter] + str(row[counter])
+                    print(result)
                 print()
 
         except:
@@ -298,7 +291,7 @@ def searchCompany(mydb):
     name,
     phone    
     """
-    
+
     print(directions)
     option = input("Enter one of the above options to select a comapny: ")
 
@@ -923,8 +916,8 @@ def insertController(mydb):
 
     try:
         mycursor.execute("INSERT INTO Controller (ID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
-        mydict['controller id:'], mydict['controller name:'], mydict['controller surname:'],
-        mydict['controller phone:']))
+            mydict['controller id:'], mydict['controller name:'], mydict['controller surname:'],
+            mydict['controller phone:']))
         mydb.commit()
     except:
         print("You entered invalid data. Try again.")
@@ -948,7 +941,7 @@ def insertEngineer(mydb):
 
     try:
         mycursor.execute("INSERT INTO Engineer (EngineerID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
-        mydict['engineer id:'], mydict['engineer name:'], mydict['engineer surname:'], mydict['engineer phone:']))
+            mydict['engineer id:'], mydict['engineer name:'], mydict['engineer surname:'], mydict['engineer phone:']))
         mydb.commit()
     except:
         print("You entered invalid data. Try again.")
@@ -972,7 +965,8 @@ def insertFreighter(mydb):
 
     try:
         mycursor.execute("INSERT INTO Freighter (FreighterID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
-        mydict['freighter id:'], mydict['freighter name:'], mydict['freighter surname:'], mydict['freighter phone:']))
+            mydict['freighter id:'], mydict['freighter name:'], mydict['freighter surname:'],
+            mydict['freighter phone:']))
         mydb.commit()
     except:
         print("You entered invalid data. Try again.")
@@ -1414,11 +1408,3 @@ def main():
 
 
 main()
-
-
-
-
-
-
-
-
