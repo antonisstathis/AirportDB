@@ -215,13 +215,14 @@ def searchFlights(mydb):
 
             i=1
             for row in mycursor:
+                print()
                 print("Flight " + str(i) + " information:")
                 print("------------------")
                 i=i+1
                 for counter in range(len(row)):
                         result = keys[counter] + str(row[counter])
                         print(result)
-                print("\n\n")
+                print()
 
         except:
             print("Invalid data entered. Try again.")
@@ -260,13 +261,14 @@ def searchFlights(mydb):
 
             i = 1
             for row in mycursor:
+                print()
                 print("Flight " + str(i) + " information:")
                 print("------------------")
                 i = i + 1
                 for counter in range(len(row)):
                     result = keys_dates[counter] + str(row[counter])
                     print(result)
-                print("\n\n")
+                print()
 
         except:
             print("Invalid data entered. Try again.")
@@ -279,13 +281,14 @@ def searchFlights(mydb):
 
             i=1
             for row in mycursor:
+                print()
                 print("Flight " + str(i) + " information:")
                 print("------------------")
                 i=i+1
                 for counter in range(len(row)):
                         result = keys[counter] + str(row[counter])
                         print(result)
-                print("\n\n")
+                print()
 
         except:
             print("Invalid data entered. Try again.")
@@ -320,13 +323,14 @@ def searchCompany(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Company " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -365,13 +369,14 @@ def searchController(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Controller " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -410,13 +415,14 @@ def searchEngineer(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Engineer " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -455,13 +461,14 @@ def searchFreighter(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Freighter " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -496,13 +503,14 @@ def searchLoad(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Load " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -541,13 +549,14 @@ def searchPlane(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Plane " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -582,13 +591,14 @@ def searchService(mydb):
 
         i = 1
         for row in mycursor:
+            print()
             print("Service " + str(i) + " information:")
             print("------------------")
             i = i + 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -1404,13 +1414,14 @@ def checkGates(mydb, check_minutes):
 
         i = 1
         for row in mycursor:
+            print()
             print("Collision: "+str(i))
             print("------------------")
             i += 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
@@ -1433,13 +1444,14 @@ def checkAirstrip(mydb, check_minutes):
 
         i = 1
         for row in mycursor:
+            print()
             print("Collision: "+str(i))
             print("------------------")
             i += 1
             for counter in range(len(row)):
                 result = keys[counter] + str(row[counter])
                 print(result)
-            print("\n\n")
+            print()
 
     except:
         print("Invalid data entered. Try again.")
