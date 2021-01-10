@@ -195,8 +195,7 @@ def searchFlights(mydb):
     message = "Enter one of the above options to select flights:"
 
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select flights: ")
 
     if option == "departure time" or option == "arrival time" or option == "parking start" or option == "parking end":
         print("Enter datetime data as follows: 2020-03-23 18:00:00")
@@ -299,12 +298,9 @@ def searchCompany(mydb):
     name,
     phone    
     """
-
-    message = "Enter one of the above options to select a comapny:"
-
+    
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select a comapny: ")
 
     message1 = "Enter " + option + " to search for a company:"
     print(message1)
@@ -344,11 +340,8 @@ def searchController(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to select a controller:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select a controller: ")
 
     message1 = "Enter " + option + " to search for a controller:"
     print(message1)
@@ -390,11 +383,8 @@ def searchEngineer(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to select an engineer:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select an engineer: ")
 
     message1 = "Enter " + option + " to search for an engineer:"
     print(message1)
@@ -436,11 +426,8 @@ def searchFreighter(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to select a freighter:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select a freighter: ")
 
     message1 = "Enter " + option + " to search for a freighter:"
     print(message1)
@@ -480,11 +467,8 @@ def searchLoad(mydb):
     freighter id   
     """
 
-    message = "Enter one of the above options to select a load:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select a load: ")
 
     message1 = "Enter " + option + " to search for a load:"
     print(message1)
@@ -524,11 +508,8 @@ def searchPlane(mydb):
     model   
     """
 
-    message = "Enter one of the above options to select a plane:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select a plane: ")
 
     message1 = "Enter " + option + " to search for a plane:"
     print(message1)
@@ -568,11 +549,8 @@ def searchService(mydb):
     engineer id 
     """
 
-    message = "Enter one of the above options to select a service:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to select a service: ")
 
     message1 = "Enter " + option + " to search for a service:"
     print(message1)
@@ -621,11 +599,8 @@ def deleteFlights(mydb):
     parking end    
     """
 
-    message = "Enter one of the above options to delete flights:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete flights: ")
 
     if option == "deaprture time" or option == "arrival time" or option == "parking start" or option == "parking end":
         print("Enter datetime data as follows: 2020-03-23 18:00:00")
@@ -666,11 +641,8 @@ def deleteCompany(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to delete a comapny:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete a comapny: ")
 
     message1 = "Enter " + option + " to delete a company:"
     print(message1)
@@ -699,11 +671,8 @@ def deleteController(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to delete a controller:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete a controller: ")
 
     message1 = "Enter " + option + " to delete a controller:"
     print(message1)
@@ -734,11 +703,8 @@ def deleteEngineer(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to delete an engineer:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete an engineer: ")
 
     message1 = "Enter " + option + " to delete an engineer:"
     print(message1)
@@ -769,11 +735,8 @@ def deleteFreighter(mydb):
     phone    
     """
 
-    message = "Enter one of the above options to delete a freighter:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete a freighter: ")
 
     message1 = "Enter " + option + " to delete a freighter:"
     print(message1)
@@ -802,11 +765,8 @@ def deleteLoad(mydb):
     freighter id    
     """
 
-    message = "Enter one of the above options to delete a load:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete a load: ")
 
     message1 = "Enter " + option + " to delete a load:"
     print(message1)
@@ -835,11 +795,8 @@ def deletePlane(mydb):
     model    
     """
 
-    message = "Enter one of the above options to delete a plane:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete a plane: ")
 
     message1 = "Enter " + option + " to delete a plane:"
     print(message1)
@@ -868,11 +825,8 @@ def deleteService(mydb):
     engineer id    
     """
 
-    message = "Enter one of the above options to delete a service:"
-
     print(directions)
-    print(message)
-    option = input()
+    option = input("Enter one of the above options to delete a service: ")
 
     message1 = "Enter " + option + " to delete a service:"
     print(message1)
@@ -1116,8 +1070,7 @@ def updateFlight(mydb):
     """
 
     print(directions)
-    print("Enter one of the above fields to update it:")
-    choice = input()
+    choice = input("Enter one of the above fields to update it: ")
 
     flight = {
         "flight_id": "FlightID",
@@ -1181,8 +1134,7 @@ def updateCompany(mydb):
     """
 
     print(directions)
-    print("Enter one of the above fields to update it:")
-    choice = input()
+    choice = input("Enter one of the above fields to update it: ")
 
     company = {
         "name": "Name",
@@ -1224,8 +1176,7 @@ def updateController(mydb):
     """
 
     print(directions)
-    print("Enter one of the above fields to update it:")
-    choice = input()
+    choice = input("Enter one of the above fields to update it: ")
 
     controller = {
         "id": "ID",
@@ -1271,8 +1222,7 @@ def updateEngineer(mydb):
     """
 
     print(directions)
-    print("Enter one of the above fields to update it:")
-    choice = input()
+    choice = input("Enter one of the above fields to update it: ")
 
     engineer = {
         "id": "EngineerID",
@@ -1318,8 +1268,7 @@ def updateFreighter(mydb):
     """
 
     print(directions)
-    print("Enter one of the above fields to update it:")
-    choice = input()
+    choice = input("Enter one of the above fields to update it: ")
 
     freighter = {
         "id": "FreighterID",
@@ -1364,8 +1313,7 @@ def updatePlane(mydb):
     """
 
     print(directions)
-    print("Enter one of the above fields to update it:")
-    choice = input()
+    choice = input("Enter one of the above fields to update it: ")
 
     plane = {
         "id": "ID",
