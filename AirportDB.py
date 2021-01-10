@@ -138,7 +138,7 @@ def chooseFunction(mydb):
             checkGates(mydb, 30)
 
         elif x == "check airstrip":
-            checkAirstrip(mydb, 30)
+            checkAirstrip(mydb, 15)
 
         else:
             analysis = x.split()
