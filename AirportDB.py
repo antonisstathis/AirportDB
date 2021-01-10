@@ -6,9 +6,9 @@ import mysql.connector
 def connect_database():
     mydb = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="06051995antonis",
-        database="airport_app"
+        user="",
+        password="",
+        database=""
     )
 
     return mydb
@@ -211,7 +211,7 @@ def searchFlights(mydb):
 
         try:
             mycursor = mydb.cursor()
-            mycursor.execute("SELECT * FROM flight;")
+            mycursor.execute("SELECT * FROM Flight;")
 
             i=1
             for row in mycursor:
@@ -233,20 +233,20 @@ def searchFlights(mydb):
         data = input()
 
     queries = {
-        "flight id": "SELECT * FROM flight WHERE FlightID = %s;",
-        "plane id": "SELECT * FROM flight WHERE PlaneID = %s;",
-        "departure": "SELECT * FROM flight WHERE Departure = %s;",
-        "destination": "SELECT * FROM flight WHERE Destination = %s;",
-        "departure time": "SELECT * FROM flight WHERE DepartTime = %s;",
-        "arrival time": "SELECT * FROM flight WHERE ArrivalTime = %s;",
-        "real departure time": "SELECT * FROM flight WHERE RealDepartTime = %s;",
-        "controller": "SELECT * FROM flight WHERE Controller = %s;",
-        "status": "SELECT * FROM flight WHERE Status = %s;",
-        "gate id": "SELECT * FROM flight WHERE GateID = %s;",
-        "airstrip id": "SELECT * FROM flight WHERE AirstripID = %s;",
-        "parking spot id": "SELECT * FROM flight WHERE ParkingSpotID = %s;",
-        "parking start": "SELECT * FROM flight WHERE ParkingStart = %s;",
-        "parking end": "SELECT * FROM flight WHERE ParkingEnd = %s;",
+        "flight id": "SELECT * FROM Flight WHERE FlightID = %s;",
+        "plane id": "SELECT * FROM Flight WHERE PlaneID = %s;",
+        "departure": "SELECT * FROM Flight WHERE Departure = %s;",
+        "destination": "SELECT * FROM Flight WHERE Destination = %s;",
+        "departure time": "SELECT * FROM Flight WHERE DepartTime = %s;",
+        "arrival time": "SELECT * FROM Flight WHERE ArrivalTime = %s;",
+        "real departure time": "SELECT * FROM Flight WHERE RealDepartTime = %s;",
+        "controller": "SELECT * FROM Flight WHERE Controller = %s;",
+        "status": "SELECT * FROM Flight WHERE Status = %s;",
+        "gate id": "SELECT * FROM Flight WHERE GateID = %s;",
+        "airstrip id": "SELECT * FROM Flight WHERE AirstripID = %s;",
+        "parking spot id": "SELECT * FROM Flight WHERE ParkingSpotID = %s;",
+        "parking start": "SELECT * FROM Flight WHERE ParkingStart = %s;",
+        "parking end": "SELECT * FROM Flight WHERE ParkingEnd = %s;",
         "search dates": "SELECT FlightID,PlaneID,Departure,Destination,DepartTime,ArrivalTime,GateID FROM flight WHERE ((DepartTime BETWEEN %s AND %s AND Departure='UPA') OR (ArrivalTime BETWEEN %s AND %s AND Destination='UPA'));"
     }
 
@@ -308,8 +308,8 @@ def searchCompany(mydb):
     data = input()
 
     queries = {
-        "name": "SELECT * FROM company WHERE Name = %s;",
-        "phone": "SELECT * FROM company WHERE Phone = %s;"
+        "name": "SELECT * FROM Company WHERE Name = %s;",
+        "phone": "SELECT * FROM Company WHERE Phone = %s;"
     }
 
     keys = ["name: ", "phone: "]
@@ -351,10 +351,10 @@ def searchController(mydb):
     data = input()
 
     queries = {
-        "id": "SELECT * FROM controller WHERE ID = %s;",
-        "name": "SELECT * FROM controller WHERE Name = %s;",
-        "surname": "SELECT * FROM controller WHERE Surname = %s;",
-        "phone": "SELECT * FROM controller WHERE Phone = %s;"
+        "id": "SELECT * FROM Controller WHERE ID = %s;",
+        "name": "SELECT * FROM Controller WHERE Name = %s;",
+        "surname": "SELECT * FROM Controller WHERE Surname = %s;",
+        "phone": "SELECT * FROM Controller WHERE Phone = %s;"
     }
 
     keys = ["id: ", "name: ", "surname: ", "phone: "]
@@ -396,10 +396,10 @@ def searchEngineer(mydb):
     data = input()
 
     queries = {
-        "id": "SELECT * FROM engineer WHERE EngineerID = %s;",
-        "name": "SELECT * FROM engineer WHERE Name = %s;",
-        "surname": "SELECT * FROM engineer WHERE Surname = %s;",
-        "phone": "SELECT * FROM engineer WHERE Phone = %s;"
+        "id": "SELECT * FROM Engineer WHERE EngineerID = %s;",
+        "name": "SELECT * FROM Engineer WHERE Name = %s;",
+        "surname": "SELECT * FROM Engineer WHERE Surname = %s;",
+        "phone": "SELECT * FROM Engineer WHERE Phone = %s;"
     }
 
     keys = ["id: ", "name: ", "surname: ", "phone: "]
@@ -441,10 +441,10 @@ def searchFreighter(mydb):
     data = input()
 
     queries = {
-        "id": "SELECT * FROM freighter WHERE FreighterID = %s;",
-        "name": "SELECT * FROM freighter WHERE Name = %s;",
-        "surname": "SELECT * FROM freighter WHERE Surname = %s;",
-        "phone": "SELECT * FROM freighter WHERE Phone = %s;"
+        "id": "SELECT * FROM Freighter WHERE FreighterID = %s;",
+        "name": "SELECT * FROM Freighter WHERE Name = %s;",
+        "surname": "SELECT * FROM Freighter WHERE Surname = %s;",
+        "phone": "SELECT * FROM Freighter WHERE Phone = %s;"
     }
 
     keys = ["id: ", "name: ", "surname: ", "phone: "]
@@ -484,8 +484,8 @@ def searchLoad(mydb):
     data = input()
 
     queries = {
-        "flight id": "SELECT * FROM loads WHERE FlightID = %s;",
-        "freighter id": "SELECT * FROM loads WHERE FreighterID = %s;"
+        "flight id": "SELECT * FROM Loads WHERE FlightID = %s;",
+        "freighter id": "SELECT * FROM Loads WHERE FreighterID = %s;"
     }
 
     keys = ["id: ", "name: ", "surname: ", "phone: "]
@@ -527,10 +527,10 @@ def searchPlane(mydb):
     data = input()
 
     queries = {
-        "id": "SELECT * FROM plane WHERE ID = %s;",
-        "owner": "SELECT * FROM plane WHERE Owner = %s;",
-        "maker": "SELECT * FROM plane WHERE Maker = %s;",
-        "model": "SELECT * FROM plane WHERE Model = %s;"
+        "id": "SELECT * FROM Plane WHERE ID = %s;",
+        "owner": "SELECT * FROM Plane WHERE Owner = %s;",
+        "maker": "SELECT * FROM Plane WHERE Maker = %s;",
+        "model": "SELECT * FROM Plane WHERE Model = %s;"
     }
 
     keys = ["id: ", "owner: ", "maker: ", "model: "]
@@ -570,8 +570,8 @@ def searchService(mydb):
     data = input()
 
     queries = {
-        "flight id": "SELECT * FROM services WHERE FlightID = %s;",
-        "engineer": "SELECT * FROM services WHERE EngineerID = %s;"
+        "flight id": "SELECT * FROM Services WHERE FlightID = %s;",
+        "engineer": "SELECT * FROM Services WHERE EngineerID = %s;"
     }
 
     keys = ["flight id: ", "engineer: "]
@@ -625,19 +625,19 @@ def deleteFlights(mydb):
     data = input()
 
     queries = {
-        "flight id": "DELETE FROM flight WHERE FlightID = %s;",
-        "plane id": "DELETE FROM flight WHERE PlaneID = %s;",
-        "departure": "DELETE FROM flight WHERE Departure = %s;",
-        "destination": "DELETE FROM flight WHERE Destination = %s;",
-        "departure time": "DELETE FROM flight WHERE DepartTime = %s;",
-        "arrival time": "DELETE FROM flight WHERE ArrivalTime = %s;",
-        "controller": "DELETE FROM flight WHERE Controller = %s;",
-        "status": "DELETE FROM flight WHERE Status = %s;",
-        "gate id": "DELETE FROM flight WHERE GateID = %s;",
-        "airstrip id": "DELETE FROM flight WHERE AirstripID = %s;",
-        "parking spot id": "DELETE FROM flight WHERE ParkingSpotID = %s;",
-        "parking start": "DELETE FROM flight WHERE ParkingStart = %s;",
-        "parking end": "DELETE FROM flight WHERE ParkingEnd = %s;"
+        "flight id": "DELETE FROM Flight WHERE FlightID = %s;",
+        "plane id": "DELETE FROM Flight WHERE PlaneID = %s;",
+        "departure": "DELETE FROM Flight WHERE Departure = %s;",
+        "destination": "DELETE FROM Flight WHERE Destination = %s;",
+        "departure time": "DELETE FROM Flight WHERE DepartTime = %s;",
+        "arrival time": "DELETE FROM Flight WHERE ArrivalTime = %s;",
+        "controller": "DELETE FROM Flight WHERE Controller = %s;",
+        "status": "DELETE FROM Flight WHERE Status = %s;",
+        "gate id": "DELETE FROM Flight WHERE GateID = %s;",
+        "airstrip id": "DELETE FROM Flight WHERE AirstripID = %s;",
+        "parking spot id": "DELETE FROM Flight WHERE ParkingSpotID = %s;",
+        "parking start": "DELETE FROM Flight WHERE ParkingStart = %s;",
+        "parking end": "DELETE FROM Flight WHERE ParkingEnd = %s;"
     }
 
     try:
@@ -667,8 +667,8 @@ def deleteCompany(mydb):
     data = input()
 
     queries = {
-        "name": "DELETE FROM company WHERE Name = %s;",
-        "phone": "DELETE FROM company WHERE Phone = %s;"
+        "name": "DELETE FROM Company WHERE Name = %s;",
+        "phone": "DELETE FROM Company WHERE Phone = %s;"
     }
 
     try:
@@ -700,10 +700,10 @@ def deleteController(mydb):
     data = input()
 
     queries = {
-        "id": "DELETE FROM controller WHERE ID = %s;",
-        "name": "DELETE FROM controller WHERE Name = %s;",
-        "surname": "DELETE FROM controller WHERE Surname = %s;",
-        "phone": "DELETE FROM controller WHERE Phone = %s;"
+        "id": "DELETE FROM Controller WHERE ID = %s;",
+        "name": "DELETE FROM Controller WHERE Name = %s;",
+        "surname": "DELETE FROM Controller WHERE Surname = %s;",
+        "phone": "DELETE FROM Controller WHERE Phone = %s;"
     }
 
     try:
@@ -735,10 +735,10 @@ def deleteEngineer(mydb):
     data = input()
 
     queries = {
-        "id": "DELETE FROM engineer WHERE EngineerID = %s;",
-        "name": "DELETE FROM engineer WHERE Name = %s;",
-        "surname": "DELETE FROM engineer WHERE Surname = %s;",
-        "phone": "DELETE FROM engineer WHERE Phone = %s;"
+        "id": "DELETE FROM Engineer WHERE EngineerID = %s;",
+        "name": "DELETE FROM Engineer WHERE Name = %s;",
+        "surname": "DELETE FROM Engineer WHERE Surname = %s;",
+        "phone": "DELETE FROM Engineer WHERE Phone = %s;"
     }
 
     try:
@@ -770,10 +770,10 @@ def deleteFreighter(mydb):
     data = input()
 
     queries = {
-        "id": "DELETE FROM freighter WHERE FreighterID = %s;",
-        "name": "DELETE FROM freighter WHERE Name = %s;",
-        "surname": "DELETE FROM freighter WHERE Surname = %s;",
-        "phone": "DELETE FROM freighter WHERE Phone = %s;"
+        "id": "DELETE FROM Freighter WHERE FreighterID = %s;",
+        "name": "DELETE FROM Freighter WHERE Name = %s;",
+        "surname": "DELETE FROM Freighter WHERE Surname = %s;",
+        "phone": "DELETE FROM Freighter WHERE Phone = %s;"
     }
 
     try:
@@ -803,8 +803,8 @@ def deleteLoad(mydb):
     data = input()
 
     queries = {
-        "flight id": "DELETE FROM loads WHERE FlightID = %s;",
-        "freighter id": "DELETE FROM loads WHERE FreighterID = %s;"
+        "flight id": "DELETE FROM Loads WHERE FlightID = %s;",
+        "freighter id": "DELETE FROM Loads WHERE FreighterID = %s;"
     }
 
     try:
@@ -836,10 +836,10 @@ def deletePlane(mydb):
     data = input()
 
     queries = {
-        "id": "DELETE FROM plane WHERE ID = %s;",
-        "owner": "DELETE FROM plane WHERE Owner = %s;",
-        "maker": "DELETE FROM plane WHERE Maker = %s;",
-        "model": "DELETE FROM plane WHERE Model = %s;"
+        "id": "DELETE FROM Plane WHERE ID = %s;",
+        "owner": "DELETE FROM Plane WHERE Owner = %s;",
+        "maker": "DELETE FROM Plane WHERE Maker = %s;",
+        "model": "DELETE FROM Plane WHERE Model = %s;"
     }
 
     try:
@@ -869,8 +869,8 @@ def deleteService(mydb):
     data = input()
 
     queries = {
-        "flight id": "DELETE FROM services WHERE FlightID = %s;",
-        "engineer id": "DELETE FROM services WHERE EngineerID = %s;"
+        "flight id": "DELETE FROM Services WHERE FlightID = %s;",
+        "engineer id": "DELETE FROM Services WHERE EngineerID = %s;"
     }
 
     try:
@@ -909,7 +909,7 @@ def insertFlight(mydb):
 
     try:
         mycursor.execute(
-            "INSERT INTO flight (FlightID,PlaneID,Departure,Destination,DepartTime,ArrivalTime,RealDepartTime,Controller,Status,GateID,AirstripID,ParkingSpotID,ParkingStart,ParkingEnd) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO Flight (FlightID,PlaneID,Departure,Destination,DepartTime,ArrivalTime,RealDepartTime,Controller,Status,GateID,AirstripID,ParkingSpotID,ParkingStart,ParkingEnd) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             (flight['flight_id:'], flight['plane_id:'], flight['departure:'], flight['destination:'],
              flight['departure time:'], flight['arrival time:'], flight['real departure time:'], flight['controller:'],
              flight['status:'], flight['gate_id:'], flight['airstrip_id:'], flight['parkingspot_id:'],
@@ -934,7 +934,7 @@ def insertCompany(mydb):
         print(mydict[key])
 
     try:
-        mycursor.execute("INSERT INTO company (Name,Phone) VALUES (%s,%s)",
+        mycursor.execute("INSERT INTO Company (Name,Phone) VALUES (%s,%s)",
                          (mydict['company name:'], mydict['company phone:']))
         mydb.commit()
     except:
@@ -958,7 +958,7 @@ def insertController(mydb):
         print(mydict[key])
 
     try:
-        mycursor.execute("INSERT INTO controller (ID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
+        mycursor.execute("INSERT INTO Controller (ID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
         mydict['controller id:'], mydict['controller name:'], mydict['controller surname:'],
         mydict['controller phone:']))
         mydb.commit()
@@ -983,7 +983,7 @@ def insertEngineer(mydb):
         print(mydict[key])
 
     try:
-        mycursor.execute("INSERT INTO engineer (EngineerID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
+        mycursor.execute("INSERT INTO Engineer (EngineerID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
         mydict['engineer id:'], mydict['engineer name:'], mydict['engineer surname:'], mydict['engineer phone:']))
         mydb.commit()
     except:
@@ -1007,7 +1007,7 @@ def insertFreighter(mydb):
         print(mydict[key])
 
     try:
-        mycursor.execute("INSERT INTO freighter (FreighterID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
+        mycursor.execute("INSERT INTO Freighter (FreighterID,Name,Surname,Phone) VALUES (%s,%s,%s,%s)", (
         mydict['freighter id:'], mydict['freighter name:'], mydict['freighter surname:'], mydict['freighter phone:']))
         mydb.commit()
     except:
@@ -1029,7 +1029,7 @@ def insertLoad(mydb):
         print(mydict[key])
 
     try:
-        mycursor.execute("INSERT INTO loads (FlightID,FreighterID) VALUES (%s,%s)",
+        mycursor.execute("INSERT INTO Loads (FlightID,FreighterID) VALUES (%s,%s)",
                          (mydict['flight id:'], mydict['freighter id:']))
         mydb.commit()
     except:
@@ -1053,7 +1053,7 @@ def insertPlane(mydb):
         print(mydict[key])
 
     try:
-        mycursor.execute("INSERT INTO plane (ID,Owner,Maker,Model) VALUES (%s,%s,%s,%s)",
+        mycursor.execute("INSERT INTO Plane (ID,Owner,Maker,Model) VALUES (%s,%s,%s,%s)",
                          (mydict['plane id:'], mydict['plane owner:'], mydict['plane maker:'], mydict['plane model:']))
         mydb.commit()
     except:
@@ -1127,20 +1127,20 @@ def updateFlight(mydb):
     }
 
     queries = {
-        "flight_id": "UPDATE flight SET FlightID = %s WHERE FlightID = %s;",
-        "plane_id": "UPDATE flight SET PlaneID = %s WHERE FlightID = %s;",
-        "departure": "UPDATE flight SET Departure = %s WHERE FlightID = %s;",
-        "destination": "UPDATE flight SET Destination = %s WHERE FlightID = %s;",
-        "departure time": "UPDATE flight SET DepartTime = %s WHERE FlightID = %s;",
-        "arrival time": "UPDATE flight SET ArrivalTime = %s WHERE FlightID = %s;",
-        "real departure time": "UPDATE flight SET RealDepartTime = %s WHERE FlightID = %s;",
-        "controller": "UPDATE flight SET Controller = %s WHERE FlightID = %s;",
-        "status": "UPDATE flight SET Status = %s WHERE FlightID = %s;",
-        "gate_id": "UPDATE flight SET GateID = %s WHERE FlightID = %s;",
-        "airstrip_id": "UPDATE flight SET AirstripID = %s WHERE FlightID = %s;",
-        "parkingspot_id": "UPDATE flight SET ParkingSpotID = %s WHERE FlightID = %s;",
-        "parking start date": "UPDATE flight SET ParkingStart = %s WHERE FlightID = %s;",
-        "parking end date": "UPDATE flight SET ParkingEnd = %s WHERE FlightID = %s;"
+        "flight_id": "UPDATE Flight SET FlightID = %s WHERE FlightID = %s;",
+        "plane_id": "UPDATE Flight SET PlaneID = %s WHERE FlightID = %s;",
+        "departure": "UPDATE Flight SET Departure = %s WHERE FlightID = %s;",
+        "destination": "UPDATE Flight SET Destination = %s WHERE FlightID = %s;",
+        "departure time": "UPDATE Flight SET DepartTime = %s WHERE FlightID = %s;",
+        "arrival time": "UPDATE Flight SET ArrivalTime = %s WHERE FlightID = %s;",
+        "real departure time": "UPDATE Flight SET RealDepartTime = %s WHERE FlightID = %s;",
+        "controller": "UPDATE Flight SET Controller = %s WHERE FlightID = %s;",
+        "status": "UPDATE Flight SET Status = %s WHERE FlightID = %s;",
+        "gate_id": "UPDATE Flight SET GateID = %s WHERE FlightID = %s;",
+        "airstrip_id": "UPDATE Flight SET AirstripID = %s WHERE FlightID = %s;",
+        "parkingspot_id": "UPDATE Flight SET ParkingSpotID = %s WHERE FlightID = %s;",
+        "parking start date": "UPDATE Flight SET ParkingStart = %s WHERE FlightID = %s;",
+        "parking end date": "UPDATE Flight SET ParkingEnd = %s WHERE FlightID = %s;"
     }
 
     message = "Enter new " + choice + ":"
@@ -1180,8 +1180,8 @@ def updateCompany(mydb):
     }
 
     queries = {
-        "name": "UPDATE company SET Name = %s WHERE Name = %s;",
-        "phone": "UPDATE company SET Phone = %s WHERE Name = %s;"
+        "name": "UPDATE Company SET Name = %s WHERE Name = %s;",
+        "phone": "UPDATE Company SET Phone = %s WHERE Name = %s;"
     }
 
     message = "Enter new " + choice + ":"
@@ -1225,10 +1225,10 @@ def updateController(mydb):
     }
 
     queries = {
-        "id": "UPDATE controller SET ID = %s WHERE ID = %s;",
-        "name": "UPDATE controller SET Name = %s WHERE ID = %s;",
-        "surname": "UPDATE controller SET Surname = %s WHERE ID = %s;",
-        "phone": "UPDATE controller SET Phone = %s WHERE ID = %s;"
+        "id": "UPDATE Controller SET ID = %s WHERE ID = %s;",
+        "name": "UPDATE Controller SET Name = %s WHERE ID = %s;",
+        "surname": "UPDATE Controller SET Surname = %s WHERE ID = %s;",
+        "phone": "UPDATE Controller SET Phone = %s WHERE ID = %s;"
     }
 
     message = "Enter new " + choice + ":"
@@ -1272,10 +1272,10 @@ def updateEngineer(mydb):
     }
 
     queries = {
-        "id": "UPDATE engineer SET EngineerID = %s WHERE EngineerID = %s;",
-        "name": "UPDATE engineer SET Name = %s WHERE EngineerID = %s;",
-        "surname": "UPDATE engineer SET Surname = %s WHERE EngineerID = %s;",
-        "phone": "UPDATE engineer SET Phone = %s WHERE EngineerID = %s;"
+        "id": "UPDATE Engineer SET EngineerID = %s WHERE EngineerID = %s;",
+        "name": "UPDATE Engineer SET Name = %s WHERE EngineerID = %s;",
+        "surname": "UPDATE Engineer SET Surname = %s WHERE EngineerID = %s;",
+        "phone": "UPDATE Engineer SET Phone = %s WHERE EngineerID = %s;"
     }
 
     message = "Enter new " + choice + ":"
@@ -1319,10 +1319,10 @@ def updateFreighter(mydb):
     }
 
     queries = {
-        "id": "UPDATE freighter SET FreighterID = %s WHERE FreighterID = %s;",
-        "name": "UPDATE freighter SET Name = %s WHERE FreighterID = %s;",
-        "surname": "UPDATE freighter SET Surname = %s WHERE FreighterID = %s;",
-        "phone": "UPDATE freighter SET Phone = %s WHERE FreighterID = %s;"
+        "id": "UPDATE Freighter SET FreighterID = %s WHERE FreighterID = %s;",
+        "name": "UPDATE Freighter SET Name = %s WHERE FreighterID = %s;",
+        "surname": "UPDATE Freighter SET Surname = %s WHERE FreighterID = %s;",
+        "phone": "UPDATE Freighter SET Phone = %s WHERE FreighterID = %s;"
     }
 
     message = "Enter new " + choice + ":"
@@ -1364,9 +1364,9 @@ def updatePlane(mydb):
     }
 
     queries = {
-        "id": "UPDATE plane SET ID = %s WHERE ID = %s;",
-        "Maker": "UPDATE plane SET Maker = %s WHERE ID = %s;",
-        "Model": "UPDATE plane SET Model = %s WHERE ID = %s;"
+        "id": "UPDATE Plane SET ID = %s WHERE ID = %s;",
+        "Maker": "UPDATE Plane SET Maker = %s WHERE ID = %s;",
+        "Model": "UPDATE Plane SET Model = %s WHERE ID = %s;"
     }
 
     message = "Enter new " + choice + ":"
@@ -1389,10 +1389,10 @@ def updatePlane(mydb):
 
 def checkGates(mydb, check_minutes):
     check_minutes = str(check_minutes)
-    query = '''SELECT A.FlightID, B.FlightID,A.destination,A.GateID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Destination='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))<%s) )
-    UNION SELECT A.FlightID, B.FlightID,A.departure,A.GateID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
-    UNION SELECT A.FlightID, B.FlightID,A.departure,A.GateID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
-    UNION SELECT A.FlightID, B.FlightID,A.destination,A.GateID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
+    query = '''SELECT A.FlightID, B.FlightID,A.destination,A.GateID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Destination='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))<%s) )
+    UNION SELECT A.FlightID, B.FlightID,A.departure,A.GateID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
+    UNION SELECT A.FlightID, B.FlightID,A.departure,A.GateID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
+    UNION SELECT A.FlightID, B.FlightID,A.destination,A.GateID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.GateID=B.GateID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
     mytuple = (check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes,
                check_minutes)
 
@@ -1418,10 +1418,10 @@ def checkGates(mydb, check_minutes):
 
 def checkAirstrip(mydb, check_minutes):
     check_minutes = str(check_minutes)
-    query = '''SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))<%s) )
-        UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
-        UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
-        UNION SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
+    query = '''SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.ArrivalTime))<%s) )
+        UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.DepartTime))<%s) )
+        UNION SELECT A.FlightID, B.FlightID,A.departure,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Departure='UPA') AND (B.Destination='UPA') AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.DepartTime,B.ArrivalTime))<%s) )
+        UNION SELECT A.FlightID, B.FlightID,A.destination,A.AirstripID,abs(TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime)) AS minutes FROM Flight A INNER JOIN Flight B ON (A.FlightID<B.FlightID AND A.AirstripID=B.AirstripID) WHERE ((A.Destination='UPA') AND (B.Departure='UPA') AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))>-%s) AND ((TIMESTAMPDIFF(minute,A.ArrivalTime,B.DepartTime))<%s) );'''
     mytuple = (check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes, check_minutes,
                check_minutes)
 
